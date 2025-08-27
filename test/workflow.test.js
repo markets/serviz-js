@@ -115,14 +115,14 @@ describe('ServizWorkflow', () => {
     })
   })
 
-  test('workflow inherits all base functionality', () => {
+  test('workflow inherits all serviz functionality', () => {
     class TestWorkflow extends ServizWorkflow {}
     
     TestWorkflow.step(Step1, { params: { someFlag: null } }) // This will fail
 
     const operation = TestWorkflow.call()
 
-    // Test that workflow has all the base methods
+    // Test that workflow has all the serviz methods
     assert.strictEqual(typeof operation.success, 'function')
     assert.strictEqual(typeof operation.failure, 'function')
     assert.strictEqual(typeof operation.ok, 'function')
