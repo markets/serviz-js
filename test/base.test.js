@@ -1,6 +1,6 @@
 import { test, describe } from 'node:test';
 import assert from 'node:assert';
-import { Serviz } from '../src/base.js';
+import { Serviz } from '../src/serviz.js';
 import { RegisterUser, PositionalAndKeyword, NoCall } from './scenarios.js';
 
 describe('Serviz', () => {

@@ -1,4 +1,4 @@
-import { Serviz } from './base.js';
+import { Serviz } from './serviz.js';
 
 export class ServizWorkflow extends Serviz {
   constructor(...args) {

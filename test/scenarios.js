@@ -1,4 +1,4 @@
-import { Serviz } from '../src/base.js';
+import { Serviz } from '../src/serviz.js';
 
 // Test service classes - equivalent to Ruby scenarios
 
