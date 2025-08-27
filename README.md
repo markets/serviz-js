@@ -15,7 +15,7 @@ npm install serviz
 
 ## Usage
 
-- Your class should extend from `Base`
+- Your class should extend from `Serviz`
 - Your class should implement a `call()` method
 - Return the _result_ via `this.result = value`
 - Add _errors_ via `this.errors.push('error message')`
@@ -26,9 +26,9 @@ npm install serviz
 First, you should create a _Service_ class:
 
 ```javascript
-import { Base } from 'serviz';
+import { Serviz } from 'serviz';
 
-class RegisterUser extends Base {
+class RegisterUser extends Serviz {
   constructor(user) {
     super();
     this.user = user;
@@ -85,14 +85,14 @@ RegisterUser.call(user, (operation) => {
 
 ## Workflows
 
-`serviz-js` also provides a `Workflow` class that allows you to compose multiple service objects together using a clean, declarative API for orchestrating complex multi-step operations.
+`serviz-js` also provides a `ServizWorkflow` class that allows you to compose multiple service objects together using a clean, declarative API for orchestrating complex multi-step operations.
 
 ### Basic Workflow Usage
 
 ```javascript
-import { Workflow } from 'serviz';
+import { ServizWorkflow } from 'serviz';
 
-class UserOnboarding extends Workflow {
+class UserOnboarding extends ServizWorkflow {
   constructor(userData) {
     super();
     this.userData = userData;
@@ -145,7 +145,7 @@ console.log(failedOperation.errors);    // => ["Email is required"]
 You can also pass custom parameters to individual steps:
 
 ```javascript
-class OrderProcessing extends Workflow {}
+class OrderProcessing extends ServizWorkflow {}
 
 OrderProcessing.step(ValidateOrder);
 
@@ -165,9 +165,9 @@ serviz-js works in browser environments via ES modules:
 
 ```html
 <script type="module">
-  import { Base, Workflow } from './node_modules/serviz/src/index.js';
+  import { Serviz, ServizWorkflow } from './node_modules/serviz/src/index.js';
   
-  class MyService extends Base {
+  class MyService extends Serviz {
     call() {
       this.result = 'Hello from browser!';
     }
@@ -181,16 +181,16 @@ serviz-js works in browser environments via ES modules:
 Or with a bundler like Webpack, Rollup, or Vite:
 
 ```javascript
-import { Base, Workflow } from 'serviz';
+import { Serviz, ServizWorkflow } from 'serviz';
 ```
 
 ## API Reference
 
-### Base Class
+### Serviz Class
 
 #### Static Methods
 
-- `Base.call(...args, [callback])` - Creates instance with args, calls it, and optionally executes callback with result
+- `Serviz.call(...args, [callback])` - Creates instance with args, calls it, and optionally executes callback with result
 
 #### Instance Methods
 
@@ -204,13 +204,13 @@ import { Base, Workflow } from 'serviz';
 - `result` - The operation result
 - `errors` - Array of error messages
 
-### Workflow Class
+### ServizWorkflow Class
 
-Extends Base with additional workflow capabilities.
+Extends Serviz with additional workflow capabilities.
 
 #### Static Methods
 
-- `Workflow.step(ServiceClass, options)` - Define a workflow step
+- `ServizWorkflow.step(ServiceClass, options)` - Define a workflow step
   - `options.params` - Parameters to pass (value or function)
   - `options.if` - Condition function for execution
 

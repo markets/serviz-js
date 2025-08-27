@@ -4,12 +4,12 @@ import assert from 'node:assert';
 describe('Browser Compatibility', () => {
   test('should work with dynamic imports', async () => {
     // Test dynamic import which is supported in both Node and browsers
-    const { Serviz: Base, ServizWorkflow: Workflow } = await import('../src/index.js');
+    const { Serviz, ServizWorkflow } = await import('../src/index.js');
     
-    assert.ok(Base);
-    assert.ok(Workflow);
+    assert.ok(Serviz);
+    assert.ok(ServizWorkflow);
     
-    class TestService extends Base {
+    class TestService extends Serviz {
       call() {
         this.result = 'Dynamic import success';
       }
@@ -21,12 +21,12 @@ describe('Browser Compatibility', () => {
 
   test('should work with static imports', async () => {
     // Test static ES module import
-    const { Serviz: Base, ServizWorkflow: Workflow } = await import('../src/index.js');
+    const { Serviz, ServizWorkflow } = await import('../src/index.js');
     
-    assert.ok(Base);
-    assert.ok(Workflow);
+    assert.ok(Serviz);
+    assert.ok(ServizWorkflow);
     
-    class TestService extends Base {
+    class TestService extends Serviz {
       call() {
         this.result = 'ES module success';
       }
@@ -38,9 +38,9 @@ describe('Browser Compatibility', () => {
 
   test('should handle class inheritance properly', async () => {
     // Test ES modules
-    const { Serviz: Base } = await import('../src/index.js');
+    const { Serviz } = await import('../src/index.js');
     
-    class ESService extends Base {
+    class ESService extends Serviz {
       call() {
         this.result = 'ES class inheritance';
       }

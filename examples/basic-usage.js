@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 
 // This example demonstrates basic usage of serviz-js
-import { Base, Workflow } from '../src/index.js';
+import { Serviz, ServizWorkflow } from '../src/index.js';
 
 // Define a simple service
-class GreetUser extends Base {
+class GreetUser extends Serviz {
   constructor(name) {
     super();
     this.name = name;
@@ -21,7 +21,7 @@ class GreetUser extends Base {
 }
 
 // Define services for workflow example
-class ValidateName extends Base {
+class ValidateName extends Serviz {
   constructor(name) {
     super();
     this.name = name;
@@ -36,7 +36,7 @@ class ValidateName extends Base {
   }
 }
 
-class FormatGreeting extends Base {
+class FormatGreeting extends Serviz {
   constructor(name) {
     super();
     this.name = name;
@@ -48,7 +48,7 @@ class FormatGreeting extends Base {
 }
 
 // Define a workflow
-class GreetingWorkflow extends Workflow {
+class GreetingWorkflow extends ServizWorkflow {
   constructor(name) {
     super();
     this.name = name;

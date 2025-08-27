@@ -1,18 +1,18 @@
 import { test, describe } from 'node:test';
 import assert from 'node:assert';
-import { Serviz as Base, ServizWorkflow as Workflow } from '../src/index.js';
+import { Serviz, ServizWorkflow } from '../src/index.js';
 
 describe('Integration', () => {
   test('can import everything from main module', () => {
-    assert.ok(Base);
-    assert.ok(Workflow);
-    assert.strictEqual(typeof Base, 'function');
-    assert.strictEqual(typeof Workflow, 'function');
+    assert.ok(Serviz);
+    assert.ok(ServizWorkflow);
+    assert.strictEqual(typeof Serviz, 'function');
+    assert.strictEqual(typeof ServizWorkflow, 'function');
   });
 
   test('complete user registration workflow example', () => {
     // Define service classes
-    class ValidateUser extends Base {
+    class ValidateUser extends Serviz {
       constructor(userData) {
         super();
         this.userData = userData;
@@ -38,7 +38,7 @@ describe('Integration', () => {
       }
     }
 
-    class RegisterUser extends Base {
+    class RegisterUser extends Serviz {
       constructor(userData) {
         super();
         this.userData = userData;
@@ -55,7 +55,7 @@ describe('Integration', () => {
       }
     }
 
-    class SendWelcomeEmail extends Base {
+    class SendWelcomeEmail extends Serviz {
       constructor(user) {
         super();
         this.user = user;
@@ -68,7 +68,7 @@ describe('Integration', () => {
     }
 
     // Define workflow
-    class UserOnboarding extends Workflow {
+    class UserOnboarding extends ServizWorkflow {
       constructor(userData) {
         super();
         this.userData = userData;
@@ -107,7 +107,7 @@ describe('Integration', () => {
   });
 
   test('block syntax simulation with call', () => {
-    class TestService extends Base {
+    class TestService extends Serviz {
       constructor(shouldFail = false) {
         super();
         this.shouldFail = shouldFail;

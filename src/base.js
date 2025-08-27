@@ -1,4 +1,4 @@
-export class Base {
+export class Serviz {
   constructor() {
     this._errors = [];
     this._result = null;

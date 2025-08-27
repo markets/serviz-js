@@ -1,10 +1,10 @@
-import { Base } from './base.js';
+import { Serviz } from './base.js';
 
 /**
  * Workflow class for orchestrating multiple service objects
- * Extends Base to provide step-by-step execution with conditional logic
+ * Extends Serviz to provide step-by-step execution with conditional logic
  */
-export class Workflow extends Base {
+export class ServizWorkflow extends Serviz {
   constructor(...args) {
     super();
     this._lastStep = null;
@@ -69,7 +69,7 @@ export class Workflow extends Base {
    * Execute a single step in the workflow
    * @private
    * @param {Object} stepConfig - Step configuration
-   * @returns {Base} The executed service instance
+   * @returns {Serviz} The executed service instance
    */
   _executeStep(stepConfig) {
     const { serviceClass, params } = stepConfig;

@@ -1,12 +1,12 @@
 import { test, describe } from 'node:test';
 import assert from 'node:assert';
-import { Workflow } from '../src/workflow.js';
+import { ServizWorkflow } from '../src/workflow.js';
 import { Step1, Step2 } from './scenarios.js';
 
-describe('Workflow', () => {
+describe('ServizWorkflow', () => {
   describe('basic workflow execution', () => {
     test('executes steps in sequence and returns the last result', () => {
-      class TestWorkflow extends Workflow {
+      class TestWorkflow extends ServizWorkflow {
         constructor(arg1, arg2) {
           super();
           this.arg1 = arg1;
@@ -28,7 +28,7 @@ describe('Workflow', () => {
     });
 
     test('accumulates errors from failed steps', () => {
-      class TestWorkflow extends Workflow {}
+      class TestWorkflow extends ServizWorkflow {}
       
       TestWorkflow.step(Step1, { params: { someFlag: null } }); // This will fail
       TestWorkflow.step(Step2, { params: { someFlag: 'test' } });
@@ -42,7 +42,7 @@ describe('Workflow', () => {
 
   describe('conditional execution', () => {
     test('skips steps when condition is false', () => {
-      class TestWorkflow extends Workflow {}
+      class TestWorkflow extends ServizWorkflow {}
       
       TestWorkflow.step(Step1, { params: { someFlag: null } }); // This will fail
       TestWorkflow.step(Step2, { 
@@ -58,7 +58,7 @@ describe('Workflow', () => {
     });
 
     test('executes steps when condition is true', () => {
-      class TestWorkflow extends Workflow {}
+      class TestWorkflow extends ServizWorkflow {}
       
       TestWorkflow.step(Step1, { params: { someFlag: 'test1' } }); // This will succeed
       TestWorkflow.step(Step2, { 
@@ -75,7 +75,7 @@ describe('Workflow', () => {
 
   describe('parameter handling', () => {
     test('uses workflow args when no params specified', () => {
-      class TestWorkflow extends Workflow {}
+      class TestWorkflow extends ServizWorkflow {}
       
       TestWorkflow.step(Step1); // Should use workflow constructor args
 
@@ -86,7 +86,7 @@ describe('Workflow', () => {
     });
 
     test('uses static params when provided', () => {
-      class TestWorkflow extends Workflow {}
+      class TestWorkflow extends ServizWorkflow {}
       
       TestWorkflow.step(Step1, { params: { someFlag: 'static_test' } });
 
@@ -97,7 +97,7 @@ describe('Workflow', () => {
     });
 
     test('uses dynamic params from function', () => {
-      class TestWorkflow extends Workflow {
+      class TestWorkflow extends ServizWorkflow {
         constructor(flag) {
           super();
           this.dynamicFlag = flag;
@@ -116,7 +116,7 @@ describe('Workflow', () => {
   });
 
   test('workflow inherits all base functionality', () => {
-    class TestWorkflow extends Workflow {}
+    class TestWorkflow extends ServizWorkflow {}
     
     TestWorkflow.step(Step1, { params: { someFlag: null } }); // This will fail
 

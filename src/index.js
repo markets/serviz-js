@@ -1,4 +1,4 @@
-import { Base } from './base.js';
-import { Workflow } from './workflow.js';
+import { Serviz } from './base.js';
+import { ServizWorkflow } from './workflow.js';
 
-export { Base as Serviz, Workflow as ServizWorkflow };
+export { Serviz, ServizWorkflow };

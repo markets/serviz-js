@@ -1,8 +1,8 @@
-import { Base } from '../src/base.js';
+import { Serviz } from '../src/base.js';
 
 // Test service classes - equivalent to Ruby scenarios
 
-export class RegisterUser extends Base {
+export class RegisterUser extends Serviz {
   constructor(user = null) {
     super();
     this.user = user;
@@ -17,7 +17,7 @@ export class RegisterUser extends Base {
   }
 }
 
-export class PositionalAndKeyword extends Base {
+export class PositionalAndKeyword extends Serviz {
   constructor(positional, options = {}) {
     super();
     this.positional = positional;
@@ -29,12 +29,12 @@ export class PositionalAndKeyword extends Base {
   }
 }
 
-export class NoCall extends Base {
+export class NoCall extends Serviz {
   // Intentionally doesn't implement call() to test error handling
 }
 
 // Test services for Workflow
-export class Step1 extends Base {
+export class Step1 extends Serviz {
   constructor(options = {}) {
     super();
     this.someFlag = options.some_flag || options.someFlag;
@@ -49,7 +49,7 @@ export class Step1 extends Base {
   }
 }
 
-export class Step2 extends Base {
+export class Step2 extends Serviz {
   constructor(options = {}) {
     super();
     this.someFlag = options.some_flag || options.someFlag;

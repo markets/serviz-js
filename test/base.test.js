@@ -1,9 +1,9 @@
 import { test, describe } from 'node:test';
 import assert from 'node:assert';
-import { Base } from '../src/base.js';
+import { Serviz } from '../src/base.js';
 import { RegisterUser, PositionalAndKeyword, NoCall } from './scenarios.js';
 
-describe('Base', () => {
+describe('Serviz', () => {
   test('operation success', () => {
     const user = 'random_user';
     const operation = RegisterUser.call(user);
