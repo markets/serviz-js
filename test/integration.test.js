@@ -1,6 +1,6 @@
 import { test, describe } from 'node:test';
 import assert from 'node:assert';
-import { Base, Workflow } from '../src/index.js';
+import { Serviz as Base, ServizWorkflow as Workflow } from '../src/index.js';
 
 describe('Integration', () => {
   test('can import everything from main module', () => {

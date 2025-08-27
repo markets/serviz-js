@@ -4,7 +4,7 @@ import assert from 'node:assert';
 describe('Browser Compatibility', () => {
   test('should work with dynamic imports', async () => {
     // Test dynamic import which is supported in both Node and browsers
-    const { Base, Workflow } = await import('../src/index.js');
+    const { Serviz: Base, ServizWorkflow: Workflow } = await import('../src/index.js');
     
     assert.ok(Base);
     assert.ok(Workflow);
@@ -21,7 +21,7 @@ describe('Browser Compatibility', () => {
 
   test('should work with static imports', async () => {
     // Test static ES module import
-    const { Base, Workflow } = await import('../src/index.js');
+    const { Serviz: Base, ServizWorkflow: Workflow } = await import('../src/index.js');
     
     assert.ok(Base);
     assert.ok(Workflow);
@@ -38,7 +38,7 @@ describe('Browser Compatibility', () => {
 
   test('should handle class inheritance properly', async () => {
     // Test ES modules
-    const { Base } = await import('../src/index.js');
+    const { Serviz: Base } = await import('../src/index.js');
     
     class ESService extends Base {
       call() {
@@ -53,15 +53,12 @@ describe('Browser Compatibility', () => {
   test('exports should be available', async () => {
     const esModule = await import('../src/index.js');
     
-    // Should have Base and Workflow
-    assert.ok(esModule.Base);
-    assert.ok(esModule.Workflow);
-    
-    // Should have default export
-    assert.ok(esModule.default);
+    // Should have Serviz and ServizWorkflow
+    assert.ok(esModule.Serviz);
+    assert.ok(esModule.ServizWorkflow);
     
     // Test that they work properly
-    class ESTest extends esModule.Base {
+    class ESTest extends esModule.Serviz {
       call() { this.result = 'ES'; }
     }
     
