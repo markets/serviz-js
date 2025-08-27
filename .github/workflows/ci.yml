@@ -30,12 +30,6 @@ jobs:
     - name: Run tests
       run: npm test
 
-    - name: Test build
-      run: npm run build
-
-    - name: Test CommonJS compatibility
-      run: node -e "const serviz = require('./dist/index.cjs'); console.log('CommonJS import successful:', !!serviz.Base && !!serviz.Workflow);"
-
   lint:
     runs-on: ubuntu-latest
 

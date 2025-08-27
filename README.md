@@ -184,23 +184,6 @@ Or with a bundler like Webpack, Rollup, or Vite:
 import { Base, Workflow } from 'serviz';
 ```
 
-## CommonJS Support
-
-For CommonJS environments:
-
-```javascript
-const { Base, Workflow } = require('serviz');
-
-class MyService extends Base {
-  call() {
-    this.result = 'Hello from CommonJS!';
-  }
-}
-
-const result = MyService.call();
-console.log(result.result); // "Hello from CommonJS!"
-```
-
 ## API Reference
 
 ### Base Class
@@ -251,16 +234,13 @@ npm test
 
 # Watch mode
 npm run test:watch
-
-# Build CommonJS version
-npm run build
 ```
 
 ## Compatibility
 
 - **Node.js**: 18.0.0+
 - **Browsers**: All modern browsers with ES module support
-- **Module Systems**: ES modules and CommonJS
+- **Module Systems**: ES modules only
 
 ## License
 

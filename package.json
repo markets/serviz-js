@@ -2,20 +2,14 @@
   "name": "serviz",
   "version": "1.0.0",
   "description": "Minimalistic Service Class Interface for JavaScript - A port of the Ruby gem serviz",
-  "main": "dist/index.js",
-  "module": "src/index.js",
+  "main": "src/index.js",
   "type": "module",
   "exports": {
-    ".": {
-      "import": "./src/index.js",
-      "require": "./dist/index.cjs"
-    }
+    ".": "./src/index.js"
   },
   "scripts": {
     "test": "node --test test/*.test.js",
-    "test:watch": "node --test --watch test/*.test.js",
-    "build": "node scripts/build.js",
-    "prepublishOnly": "npm run build"
+    "test:watch": "node --test --watch test/*.test.js"
   },
   "keywords": [
     "service",
@@ -39,7 +33,6 @@
   },
   "files": [
     "src/",
-    "dist/",
     "README.md",
     "LICENSE"
   ]
