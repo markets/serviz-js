@@ -43,11 +43,11 @@ describe('Base', () => {
     assert.deepStrictEqual(operation.result, ['foo', 'bar']);
   });
 
-  test('accepts a block via callWithBlock', () => {
+  test('accepts a block via call', () => {
     let blockCalled = false;
     let blockOperation = null;
 
-    RegisterUser.callWithBlock(null, (operation) => {
+    RegisterUser.call(null, (operation) => {
       blockCalled = true;
       blockOperation = operation;
     });

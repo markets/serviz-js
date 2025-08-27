@@ -10,22 +10,10 @@ export class Base {
 
   /**
    * Class method to create instance and call it
-   * @param {...any} args - Arguments to pass to constructor
+   * @param {...any} args - Arguments to pass to constructor and optional callback function
    * @returns {Base} The service instance after calling
    */
   static call(...args) {
-    const instance = new this(...args);
-    instance.call();
-    return instance;
-  }
-
-  /**
-   * Class method with block support
-   * @param {...any} args - Arguments to pass to constructor  
-   * @param {Function} [block] - Optional callback function
-   * @returns {Base} The service instance after calling
-   */
-  static callWithBlock(...args) {
     const block = typeof args[args.length - 1] === 'function' ? args.pop() : null;
     const instance = new this(...args);
     instance.call();

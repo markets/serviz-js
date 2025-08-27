@@ -106,7 +106,7 @@ describe('Integration', () => {
     assert.ok(failedOnboarding.errors.includes('Email is required'));
   });
 
-  test('block syntax simulation with callWithBlock', () => {
+  test('block syntax simulation with call', () => {
     class TestService extends Base {
       constructor(shouldFail = false) {
         super();
@@ -125,13 +125,13 @@ describe('Integration', () => {
     let successMessage = '';
     let errorMessage = '';
 
-    TestService.callWithBlock(false, (operation) => {
+    TestService.call(false, (operation) => {
       if (operation.success()) {
         successMessage = 'Operation succeeded!';
       }
     });
 
-    TestService.callWithBlock(true, (operation) => {
+    TestService.call(true, (operation) => {
       if (operation.failure()) {
         errorMessage = 'Operation failed!';
       }

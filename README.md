@@ -75,10 +75,10 @@ if (operation.failure()) {
 
 ### Block syntax
 
-You may like to use the _block_ syntax with `callWithBlock`:
+You may like to use the _block_ syntax by passing a callback function as the last argument to `call`:
 
 ```javascript
-RegisterUser.callWithBlock(user, (operation) => {
+RegisterUser.call(user, (operation) => {
   console.log("Success!") if operation.ok();
 });
 ```
@@ -190,8 +190,7 @@ import { Base, Workflow } from 'serviz';
 
 #### Static Methods
 
-- `Base.call(...args)` - Creates instance with args and calls it
-- `Base.callWithBlock(...args, callback)` - Creates instance and calls callback with result
+- `Base.call(...args, [callback])` - Creates instance with args, calls it, and optionally executes callback with result
 
 #### Instance Methods
 

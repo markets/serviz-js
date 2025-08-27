@@ -95,7 +95,7 @@ if (workflow2.failure()) {
 
 console.log('\n=== Block Syntax Example ===');
 
-GreetUser.callWithBlock('Charlie', (operation) => {
+GreetUser.call('Charlie', (operation) => {
   if (operation.success()) {
     console.log('Success:', operation.result);
   } else {
