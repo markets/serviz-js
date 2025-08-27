@@ -1,9 +1,5 @@
 import { Serviz } from './base.js';
 
-/**
- * Workflow class for orchestrating multiple service objects
- * Extends Serviz to provide step-by-step execution with conditional logic
- */
 export class ServizWorkflow extends Serviz {
   constructor(...args) {
     super();
@@ -12,13 +8,6 @@ export class ServizWorkflow extends Serviz {
     this._steps = this.constructor._steps || [];
   }
 
-  /**
-   * Define a step in the workflow
-   * @param {Function} serviceClass - The service class to execute
-   * @param {Object} [options={}] - Step configuration
-   * @param {any} [options.params] - Parameters to pass to the service
-   * @param {Function} [options.if] - Condition function to check before execution
-   */
   static step(serviceClass, options = {}) {
     if (!this._steps) {
       this._steps = [];
@@ -31,17 +20,10 @@ export class ServizWorkflow extends Serviz {
     });
   }
 
-  /**
-   * Get the steps defined for this workflow class
-   * @returns {Array} Array of step configurations
-   */
   static get steps() {
     return this._steps || [];
   }
 
-  /**
-   * Execute the workflow by running each step
-   */
   call() {
     for (const stepConfig of this._steps) {
       // Check condition if provided
@@ -65,12 +47,6 @@ export class ServizWorkflow extends Serviz {
     return this;
   }
 
-  /**
-   * Execute a single step in the workflow
-   * @private
-   * @param {Object} stepConfig - Step configuration
-   * @returns {Serviz} The executed service instance
-   */
   _executeStep(stepConfig) {
     const { serviceClass, params } = stepConfig;
 
