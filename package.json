@@ -1,0 +1,46 @@
+{
+  "name": "serviz",
+  "version": "1.0.0",
+  "description": "Minimalistic Service Class Interface for JavaScript - A port of the Ruby gem serviz",
+  "main": "dist/index.js",
+  "module": "src/index.js",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./src/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "scripts": {
+    "test": "node --test test/*.test.js",
+    "test:watch": "node --test --watch test/*.test.js",
+    "build": "node scripts/build.js",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "service",
+    "command",
+    "pattern",
+    "workflow",
+    "orchestration"
+  ],
+  "author": "serviz-js",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/markets/serviz-js.git"
+  },
+  "bugs": {
+    "url": "https://github.com/markets/serviz-js/issues"
+  },
+  "homepage": "https://github.com/markets/serviz-js#readme",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "files": [
+    "src/",
+    "dist/",
+    "README.md",
+    "LICENSE"
+  ]
+}

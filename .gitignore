@@ -80,7 +80,7 @@ out
 
 # Nuxt.js build / generate output
 .nuxt
-dist
+# Don't ignore dist/ - we include our built CommonJS files
 
 # Gatsby files
 .cache/
