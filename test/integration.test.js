@@ -64,7 +64,6 @@ describe('Integration', () => {
     class UserOnboarding extends ServizWorkflow {
       constructor(userData) {
         super(userData)
-        this.userData = userData
       }
     }
 
