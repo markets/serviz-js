@@ -36,17 +36,17 @@ describe('Serviz', () => {
     })
   })
 
-  test('accepts a block via call', () => {
-    let blockCalled = false
-    let blockOperation = null
+  test('accepts a callback via call', () => {
+    let callbackCalled = false
+    let callbackOperation = null
 
     RegisterUser.call(null, (operation) => {
-      blockCalled = true
-      blockOperation = operation
+      callbackCalled = true
+      callbackOperation = operation
     })
 
-    assert.strictEqual(blockCalled, true)
-    assert.strictEqual(blockOperation.failure(), true)
+    assert.strictEqual(callbackCalled, true)
+    assert.strictEqual(callbackOperation.failure(), true)
   })
 
   test('error messages with custom separator', () => {

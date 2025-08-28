@@ -5,12 +5,12 @@ export class Serviz {
   }
 
   static call(...args) {
-    const block = typeof args[args.length - 1] === 'function' ? args.pop() : null
+    const callback = typeof args[args.length - 1] === 'function' ? args.pop() : null
     const instance = new this(...args)
     instance.call()
     
-    if (block) {
-      block(instance)
+    if (callback) {
+      callback(instance)
     }
     
     return instance

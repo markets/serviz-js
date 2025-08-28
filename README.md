@@ -73,9 +73,9 @@ if (operation.failure()) {
 }
 ```
 
-### Block syntax
+### Callback syntax
 
-You may like to use the _block_ syntax by passing a callback function as the last argument to `call`:
+You may like to use the _callback_ syntax by passing a callback function as the last argument to `call`:
 
 ```javascript
 RegisterUser.call(user, (operation) => {
