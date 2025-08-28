@@ -1,6 +1,6 @@
 # Serviz-js
 
-[![](https://img.shields.io/npm/v/serviz-js.svg)](https://www.npmjs.com/package/serviz-js)
+[![](https://img.shields.io/npm/v/serviz.svg)](https://www.npmjs.com/package/serviz)
 [![CI](https://github.com/markets/serviz-js/actions/workflows/ci.yml/badge.svg)](https://github.com/markets/serviz-js/actions/workflows/ci.yml)
 
 > Command object Interface for JavaScript
