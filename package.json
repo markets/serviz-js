@@ -1,12 +1,9 @@
 {
   "name": "serviz",
-  "version": "1.0.0",
-  "description": "Minimalistic Service Class Interface for JavaScript - A port of the Ruby gem serviz",
+  "version": "0.1.0",
+  "description": "Minimalistic Command object Interface for JavaScript",
   "main": "src/index.js",
   "type": "module",
-  "exports": {
-    ".": "./src/index.js"
-  },
   "scripts": {
     "test": "node --test test/*.test.js",
     "test:watch": "node --test --watch test/*.test.js"
@@ -18,7 +15,7 @@
     "workflow",
     "orchestration"
   ],
-  "author": "serviz-js",
+  "author": "Marc Anguera Insa @markets",
   "license": "MIT",
   "repository": {
     "type": "git",

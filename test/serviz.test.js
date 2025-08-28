@@ -1,7 +1,7 @@
 import { test, describe } from 'node:test'
 import assert from 'node:assert'
 import { Serviz } from '../src/serviz.js'
-import { RegisterUser, PositionalAndKeyword, NoCall } from './scenarios.js'
+import { RegisterUser, NoCall } from './scenarios.js'
 
 describe('Serviz', () => {
   test('operation success', () => {
@@ -34,13 +34,6 @@ describe('Serviz', () => {
       name: 'Error',
       message: 'NotImplementedError: call method must be implemented'
     })
-  })
-
-  test('accepts positional and keyword args', () => {
-    const operation = PositionalAndKeyword.call('foo', { keyword: 'bar' })
-
-    assert.strictEqual(operation.success(), true)
-    assert.deepStrictEqual(operation.result, ['foo', 'bar'])
   })
 
   test('accepts a block via call', () => {

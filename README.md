@@ -1,11 +1,13 @@
-# serviz-js
+# Serviz-js
 
-[![npm version](https://badge.fury.io/js/serviz.svg)](https://badge.fury.io/js/serviz)
+[![](https://img.shields.io/npm/v/serviz-js.svg)](https://www.npmjs.com/package/serviz-js)
 [![CI](https://github.com/markets/serviz-js/actions/workflows/ci.yml/badge.svg)](https://github.com/markets/serviz-js/actions/workflows/ci.yml)
 
-> Minimalistic Service Class Interface for JavaScript - A port of the Ruby gem [serviz](https://github.com/markets/serviz)
+> Minimalistic Service Class Interface for JavaScript
 
-`serviz-js` provides a minimal interface to unify and homogenize your *Service* or *Command* objects in your JavaScript code. It works in both Node.js and browser environments.
+`Serviz-js` provides a minimal interface to unify and homogenize your *Service* or *Command* objects in your JavaScript code. It works in both Node.js and browser environments.
+
+`Serviz-js` is a port of the Ruby gem [Serviz](https://github.com/markets/serviz).
 
 ## Installation
 
@@ -85,7 +87,7 @@ RegisterUser.call(user, (operation) => {
 
 ## Workflows
 
-`serviz-js` also provides a `ServizWorkflow` class that allows you to compose multiple service objects together using a clean, declarative API for orchestrating complex multi-step operations.
+`Serviz-js` also provides a `ServizWorkflow` class that allows you to compose multiple service objects together using a clean, declarative API for orchestrating complex multi-step operations.
 
 ### Basic Workflow Usage
 
@@ -132,13 +134,12 @@ console.log(failedOperation.failure()); // => true
 console.log(failedOperation.errors);    // => ["Email is required"]
 ```
 
-### Advanced Workflow Features
+### Workflow Features
 
-- **Declarative step definition** using class-level `step()` method declarations
 - **Conditional execution** using the `if:` option to control whether steps run based on previous results
 - **Error accumulation** from all failed steps in the workflow
 - **Result chaining** where the last successful step's result becomes the workflow result
-- **Full compatibility** with the existing serviz interface (`success()`, `failure()`, `errors`, `result`)
+- **Full compatibility** with the existing Serviz interface (`success()`, `failure()`, `errors`, `result`)
 
 ### Custom Parameters
 
@@ -161,7 +162,7 @@ OrderProcessing.step(ShipOrder, {
 
 ## Browser Usage
 
-serviz-js works in browser environments via ES modules:
+`Serviz-js` works in browser environments via ES modules:
 
 ```html
 <script type="module">
@@ -184,36 +185,6 @@ Or with a bundler like Webpack, Rollup, or Vite:
 import { Serviz, ServizWorkflow } from 'serviz';
 ```
 
-## API Reference
-
-### Serviz Class
-
-#### Static Methods
-
-- `Serviz.call(...args, [callback])` - Creates instance with args, calls it, and optionally executes callback with result
-
-#### Instance Methods
-
-- `call()` - Must be implemented by subclasses
-- `success()` / `ok()` - Returns true if no errors
-- `failure()` / `error()` - Returns true if has errors  
-- `errorMessages(separator = ', ')` - Join errors with separator
-
-#### Properties
-
-- `result` - The operation result
-- `errors` - Array of error messages
-
-### ServizWorkflow Class
-
-Extends Serviz with additional workflow capabilities.
-
-#### Static Methods
-
-- `ServizWorkflow.step(ServiceClass, options)` - Define a workflow step
-  - `options.params` - Parameters to pass (value or function)
-  - `options.if` - Condition function for execution
-
 ## Development
 
 To contribute to this project:
@@ -222,7 +193,6 @@ To contribute to this project:
 git clone https://github.com/markets/serviz-js.git
 cd serviz-js
 npm install
-npm test
 ```
 
 ### Running Tests
@@ -235,16 +205,6 @@ npm test
 npm run test:watch
 ```
 
-## Compatibility
-
-- **Node.js**: 18.0.0+
-- **Browsers**: All modern browsers with ES module support
-- **Module Systems**: ES modules only
-
 ## License
 
 Copyright (c) Marc Anguera. `serviz-js` is released under the [MIT](LICENSE) License.
-
-## Credits
-
-This is a JavaScript port of the Ruby gem [serviz](https://github.com/markets/serviz) by Marc Anguera.

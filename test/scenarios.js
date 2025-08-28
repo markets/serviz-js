@@ -1,7 +1,5 @@
 import { Serviz } from '../src/serviz.js'
 
-// Test service classes - equivalent to Ruby scenarios
-
 export class RegisterUser extends Serviz {
   constructor(user = null) {
     super()
@@ -14,18 +12,6 @@ export class RegisterUser extends Serviz {
     } else {
       this.errors.push('No user!')
     }
-  }
-}
-
-export class PositionalAndKeyword extends Serviz {
-  constructor(positional, options = {}) {
-    super()
-    this.positional = positional
-    this.keyword = options.keyword
-  }
-
-  call() {
-    this.result = [this.positional, this.keyword]
   }
 }
 

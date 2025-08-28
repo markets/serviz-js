@@ -3,13 +3,6 @@ import assert from 'node:assert'
 import { Serviz, ServizWorkflow } from '../src/index.js'
 
 describe('Integration', () => {
-  test('can import everything from main module', () => {
-    assert.ok(Serviz)
-    assert.ok(ServizWorkflow)
-    assert.strictEqual(typeof Serviz, 'function')
-    assert.strictEqual(typeof ServizWorkflow, 'function')
-  })
-
   test('complete user registration workflow example', () => {
     // Define service classes
     class ValidateUser extends Serviz {
@@ -104,40 +97,5 @@ describe('Integration', () => {
 
     assert.strictEqual(failedOnboarding.failure(), true)
     assert.ok(failedOnboarding.errors.includes('Email is required'))
-  })
-
-  test('block syntax simulation with call', () => {
-    class TestService extends Serviz {
-      constructor(shouldFail = false) {
-        super()
-        this.shouldFail = shouldFail
-      }
-
-      call() {
-        if (this.shouldFail) {
-          this.errors.push('Intentional failure')
-        } else {
-          this.result = 'Success!'
-        }
-      }
-    }
-
-    let successMessage = ''
-    let errorMessage = ''
-
-    TestService.call(false, (operation) => {
-      if (operation.success()) {
-        successMessage = 'Operation succeeded!'
-      }
-    })
-
-    TestService.call(true, (operation) => {
-      if (operation.failure()) {
-        errorMessage = 'Operation failed!'
-      }
-    })
-
-    assert.strictEqual(successMessage, 'Operation succeeded!')
-    assert.strictEqual(errorMessage, 'Operation failed!')
   })
 })
