@@ -3,9 +3,9 @@
 [![](https://img.shields.io/npm/v/serviz-js.svg)](https://www.npmjs.com/package/serviz-js)
 [![CI](https://github.com/markets/serviz-js/actions/workflows/ci.yml/badge.svg)](https://github.com/markets/serviz-js/actions/workflows/ci.yml)
 
-> Minimalistic Service Class Interface for JavaScript
+> Command object Interface for JavaScript
 
-`Serviz-js` provides a minimal interface to unify and homogenize your *Service* or *Command* objects in your JavaScript code. It works in both Node.js and browser environments.
+`Serviz-js` provides a minimal interface to unify and homogenize your *Service* or *Command* objects in your JavaScript applications. It works in both Node.js and browser environments.
 
 `Serviz-js` is a port of the Ruby gem [Serviz](https://github.com/markets/serviz).
 
@@ -207,4 +207,4 @@ npm run test:watch
 
 ## License
 
-Copyright (c) Marc Anguera. `serviz-js` is released under the [MIT](LICENSE) License.
+Copyright (c) Marc Anguera. `Serviz-js` is released under the [MIT](LICENSE) License.
