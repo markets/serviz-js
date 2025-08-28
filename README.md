@@ -1,13 +1,11 @@
-# Serviz-js
+# Serviz-JS
 
 [![](https://img.shields.io/npm/v/serviz.svg)](https://www.npmjs.com/package/serviz)
 [![CI](https://github.com/markets/serviz-js/actions/workflows/ci.yml/badge.svg)](https://github.com/markets/serviz-js/actions/workflows/ci.yml)
 
-> Command object Interface for JavaScript
+> Command object Interface for JavaScript, a port of the Ruby gem [Serviz](https://github.com/markets/serviz).
 
-`Serviz-js` provides a minimal interface to unify and homogenize your *Service* or *Command* objects in your JavaScript applications. It works in both Node.js and browser environments.
-
-`Serviz-js` is a port of the Ruby gem [Serviz](https://github.com/markets/serviz).
+`Serviz-JS` provides a minimal interface to unify and homogenize your *Service* or *Command* objects in your JavaScript applications. It works in both Node.js and browser environments.
 
 ## Installation
 
@@ -28,12 +26,12 @@ npm install serviz
 First, you should create a _Service_ class:
 
 ```javascript
-import { Serviz } from 'serviz';
+import { Serviz } from 'serviz'
 
 class RegisterUser extends Serviz {
   constructor(user) {
-    super();
-    this.user = user;
+    super()
+    this.user = user
   }
 
   call() {
@@ -43,9 +41,9 @@ class RegisterUser extends Serviz {
         id: Math.random().toString(36),
         ...this.user,
         registeredAt: new Date()
-      };
+      }
     } else {
-      this.errors.push('Invalid user data');
+      this.errors.push('Invalid user data')
     }
   }
 }
@@ -54,13 +52,13 @@ class RegisterUser extends Serviz {
 Now, you can run it by using the `call` method:
 
 ```javascript
-const operation = RegisterUser.call({ name: 'John', email: 'john@example.com' });
+const operation = RegisterUser.call({ name: 'John', email: 'john@example.com' })
 
 if (operation.success()) {
-  const user = operation.result;
-  console.log(`Success! ${user.name} registered!`);
+  const user = operation.result
+  console.log(`Success! ${user.name} registered!`)
 } else {
-  console.log(`Error! ${operation.errorMessages()}`);
+  console.log(`Error! ${operation.errorMessages()}`)
 }
 ```
 
@@ -70,8 +68,8 @@ In case you want to check if the operation failed, you can use the `failure()` m
 
 ```javascript
 if (operation.failure()) {
-  console.log("Error! Please try again...");
-  return;
+  console.log("Error! Please try again...")
+  return
 }
 ```
 
@@ -81,57 +79,57 @@ You may like to use the _block_ syntax by passing a callback function as the las
 
 ```javascript
 RegisterUser.call(user, (operation) => {
-  console.log("Success!") if operation.ok();
-});
+  console.log("Success!") if operation.ok()
+})
 ```
 
 ## Workflows
 
-`Serviz-js` also provides a `ServizWorkflow` class that allows you to compose multiple service objects together using a clean, declarative API for orchestrating complex multi-step operations.
+`Serviz-JS` also provides a `ServizWorkflow` class that allows you to compose multiple service objects together using a clean, declarative API for orchestrating complex multi-step operations.
 
 ### Basic Workflow Usage
 
 ```javascript
-import { ServizWorkflow } from 'serviz';
+import { ServizWorkflow } from 'serviz'
 
 class UserOnboarding extends ServizWorkflow {
   constructor(userData) {
-    super();
-    this.userData = userData;
+    super()
+    this.userData = userData
   }
 }
 
 UserOnboarding.step(ValidateUser, { 
   params: (instance) => instance.userData 
-});
+})
 
 UserOnboarding.step(RegisterUser, { 
   params: (instance) => instance.userData,
   if: (lastStep) => lastStep && lastStep.success()
-});
+})
 
 UserOnboarding.step(SendWelcomeEmail, { 
   params: (instance) => instance._lastStep.result,
   if: (lastStep) => lastStep && lastStep.success()
-});
+})
 
 // Usage
 const operation = UserOnboarding.call({
   name: 'John Doe',
   email: 'john@example.com'
-});
+})
 
-console.log(operation.success()); // => true
-console.log(operation.result);    // => result from SendWelcomeEmail
+console.log(operation.success()) // => true
+console.log(operation.result)    // => result from SendWelcomeEmail
 
 // Handles failures gracefully
 const failedOperation = UserOnboarding.call({
   name: 'Jane Doe'
   // Missing email
-});
+})
 
-console.log(failedOperation.failure()); // => true
-console.log(failedOperation.errors);    // => ["Email is required"]
+console.log(failedOperation.failure()) // => true
+console.log(failedOperation.errors)    // => ["Email is required"]
 ```
 
 ### Workflow Features
@@ -148,41 +146,41 @@ You can also pass custom parameters to individual steps:
 ```javascript
 class OrderProcessing extends ServizWorkflow {}
 
-OrderProcessing.step(ValidateOrder);
+OrderProcessing.step(ValidateOrder)
 
 OrderProcessing.step(ChargePayment, { 
   params: { gateway: 'stripe' }, 
   if: (lastStep) => lastStep.success() 
-});
+})
 
 OrderProcessing.step(ShipOrder, { 
   if: (lastStep) => lastStep.success() 
-});
+})
 ```
 
 ## Browser Usage
 
-`Serviz-js` works in browser environments via ES modules:
+`Serviz-JS` works in browser environments via ES modules:
 
 ```html
 <script type="module">
-  import { Serviz, ServizWorkflow } from './node_modules/serviz/src/index.js';
+  import { Serviz, ServizWorkflow } from './node_modules/serviz/src/index.js'
   
   class MyService extends Serviz {
     call() {
-      this.result = 'Hello from browser!';
+      this.result = 'Hello from browser!'
     }
   }
   
-  const result = MyService.call();
-  console.log(result.result); // "Hello from browser!"
+  const operation = MyService.call()
+  console.log(operation.result) // "Hello from browser!"
 </script>
 ```
 
 Or with a bundler like Webpack, Rollup, or Vite:
 
 ```javascript
-import { Serviz, ServizWorkflow } from 'serviz';
+import { Serviz, ServizWorkflow } from 'serviz'
 ```
 
 ## Development
@@ -207,4 +205,4 @@ npm run test:watch
 
 ## License
 
-Copyright (c) Marc Anguera. `Serviz-js` is released under the [MIT](LICENSE) License.
+Copyright (c) Marc Anguera. `Serviz-JS` is released under the [MIT](LICENSE) License.
