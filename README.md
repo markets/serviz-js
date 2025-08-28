@@ -73,13 +73,13 @@ if (operation.failure()) {
 }
 ```
 
-### Callback syntax
+### Callback style
 
-You may like to use the _callback_ syntax by passing a callback function as the last argument to `call`:
+You may like to use the _callback_ style by passing a callback function as the last argument to `call`:
 
 ```javascript
 RegisterUser.call(user, (operation) => {
-  console.log("Success!") if operation.ok()
+  if (operation.ok()) console.log("Success!")
 })
 ```
 
