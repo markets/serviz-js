@@ -92,7 +92,12 @@ RegisterUser.call(user, (operation) => {
 ```javascript
 import { ServizWorkflow } from 'serviz'
 
-class UserOnboarding extends ServizWorkflow {}
+class UserOnboarding extends ServizWorkflow {
+  constructor(userData) {
+    super(userData)
+    this.userData = userData
+  }
+}
 
 UserOnboarding.step(ValidateUser)
 
