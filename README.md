@@ -93,9 +93,6 @@ RegisterUser.call(user, (operation) => {
 import { ServizWorkflow } from 'serviz'
 
 class UserOnboarding extends ServizWorkflow {
-  constructor(userData) {
-    super(userData)
-  }
 }
 
 UserOnboarding.step(ValidateUser)

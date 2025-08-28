@@ -62,9 +62,6 @@ describe('Integration', () => {
 
     // Define workflow
     class UserOnboarding extends ServizWorkflow {
-      constructor(userData) {
-        super(userData)
-      }
     }
 
     UserOnboarding.step(ValidateUser)
