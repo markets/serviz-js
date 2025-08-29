@@ -61,8 +61,7 @@ describe('Integration', () => {
     }
 
     // Define workflow
-    class UserOnboarding extends ServizWorkflow {
-    }
+    class UserOnboarding extends ServizWorkflow {}
 
     UserOnboarding.step(ValidateUser)
     UserOnboarding.step(RegisterUser, { 

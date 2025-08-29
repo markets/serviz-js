@@ -92,15 +92,12 @@ RegisterUser.call(user, (operation) => {
 ```javascript
 import { ServizWorkflow } from 'serviz'
 
-class UserOnboarding extends ServizWorkflow {
-}
+class UserOnboarding extends ServizWorkflow {}
 
 UserOnboarding.step(ValidateUser)
-
 UserOnboarding.step(RegisterUser, { 
   if: (lastStep) => lastStep && lastStep.success()
 })
-
 UserOnboarding.step(SendWelcomeEmail, { 
   params: (instance) => instance._lastStep.result,
   if: (lastStep) => lastStep && lastStep.success()
