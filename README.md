@@ -92,22 +92,12 @@ RegisterUser.call(user, (operation) => {
 ```javascript
 import { ServizWorkflow } from 'serviz'
 
-class UserOnboarding extends ServizWorkflow {
-  constructor(userData) {
-    super()
-    this.userData = userData
-  }
-}
+class UserOnboarding extends ServizWorkflow {}
 
-UserOnboarding.step(ValidateUser, { 
-  params: (instance) => instance.userData 
-})
-
+UserOnboarding.step(ValidateUser)
 UserOnboarding.step(RegisterUser, { 
-  params: (instance) => instance.userData,
   if: (lastStep) => lastStep && lastStep.success()
 })
-
 UserOnboarding.step(SendWelcomeEmail, { 
   params: (instance) => instance._lastStep.result,
   if: (lastStep) => lastStep && lastStep.success()
